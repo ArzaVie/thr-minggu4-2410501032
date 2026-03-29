@@ -1,36 +1,52 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Theme } from '../theme';
+import { Trash2, Gift, ShoppingBag } from 'lucide-react-native';
 
 const TransactionItem = ({ item, onDelete }) => (
-  <View style={styles.card}>
-    <View>
-      <Text style={styles.title}>{item.name}</Text>
-      <Text style={styles.category}>{item.category} • {item.date}</Text>
+  <View style={styles.container}>
+    <View style={[styles.iconBox, { backgroundColor: item.type === 'INCOME' ? '#E8F5E9' : '#FDECEA' }]}>
+      {item.type === 'INCOME' ? 
+        <Gift color={Theme.success} size={20} /> : 
+        <ShoppingBag color={Theme.danger} size={20} />
+      }
     </View>
-    <View style={{ alignItems: 'flex-end' }}>
-      <Text style={[styles.amount, { color: item.type === 'INCOME' ? '#2ecc71' : '#e74c3c' }]}>
-        {item.type === 'INCOME' ? '+' : '-'} Rp {item.amount.toLocaleString()}
+    
+    <View style={styles.details}>
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.date}>{item.date}</Text>
+    </View>
+
+    <View style={styles.amountBox}>
+      <Text style={[styles.amount, { color: item.type === 'INCOME' ? Theme.success : Theme.danger }]}>
+        {item.type === 'INCOME' ? '+' : '-'} Rp {item.amount.toLocaleString('id-ID')}
       </Text>
-      <TouchableOpacity onPress={() => onDelete(item.id)}>
-        <Text style={{ color: '#95a5a6', fontSize: 12, marginTop: 4 }}>Hapus</Text>
+      <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.deleteBtn}>
+        <Trash2 size={14} color="#BDC3C7" />
       </TouchableOpacity>
     </View>
   </View>
 );
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    padding: 15,
-    borderRadius: 10,
+  container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 10,
-    elevation: 2,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginHorizontal: 20,
+    marginBottom: 12,
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#F0F0F0',
   },
-  title: { fontWeight: 'bold', fontSize: 16 },
-  category: { color: '#7f8c8d', fontSize: 12 },
-  amount: { fontWeight: 'bold', fontSize: 15 },
+  iconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  details: { flex: 1, marginLeft: 15 },
+  name: { fontSize: 15, fontWeight: 'bold', color: Theme.textPrimary },
+  date: { fontSize: 12, color: '#95A5A6', marginTop: 2 },
+  amountBox: { alignItems: 'flex-end' },
+  amount: { fontSize: 15, fontWeight: '700' },
+  deleteBtn: { marginTop: 5 }
 });
 
 export default TransactionItem;
