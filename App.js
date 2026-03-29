@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { WalletProvider } from './src/context/WalletContext';
+import DashboardScreen from './src/screens/DashboardScreen';
+import AddTransactionScreen from './src/screens/AddTransactionScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <WalletProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'THR Manager' }} />
+          <Stack.Screen name="AddTransaction" component={AddTransactionScreen} options={{ title: 'Tambah Catatan' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </WalletProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
