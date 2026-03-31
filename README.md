@@ -16,10 +16,10 @@ Aplikasi ini adalah aplikasi manajemen keuangan yang memungkinkan pengguna untuk
 - **Custom Hook**: `useWallet` (file `useWallet.js`) digunakan untuk mengakses state global dari `WalletContext` dan menghitung total pemasukan, total pengeluaran, serta saldo berdasarkan transaksi yang ada.
 
 ## Screenshot
-![Gambar 1] .assets/thr1.jpg
-![Gambar 2] .assets/thr2.jpg
-![Gambar 3] .assets/thr3.jpg
-![Gambar 4] .assets/thr4.jpg
+![Gambar 1](./assets/thr1.jpg) 
+![Gambar 2](./assets/thr2.jpg) 
+![Gambar 3](./assets/thr3.jpg) 
+![Gambar 4](./assets/thr4.jpg)
 
 ## Cara Install dari GitHub
 1. Clone repository ini ke komputer Anda:
