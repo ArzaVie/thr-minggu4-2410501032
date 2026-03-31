@@ -22,7 +22,7 @@ export default function App() {
     <WalletProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'THR Manager' }} />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Saku THR' }} />
           <Stack.Screen name="AddTransaction" component={AddTransactionScreen} options={{ title: 'Tambah Catatan' }} />
         </Stack.Navigator>
       </NavigationContainer>
